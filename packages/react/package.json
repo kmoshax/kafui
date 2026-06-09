@@ -1,0 +1,34 @@
+{
+  "name": "@kafui/react",
+  "version": "0.0.0",
+  "description": "React Material 3 components for kafUI: built on React Aria, rendering BEM classNames (no styling in JSX), sprite-backed icons, i18n & RTL ready.",
+  "type": "module",
+  "license": "MIT",
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "bun build ./src/index.ts --outdir dist --target browser --packages external && tsc --project tsconfig.build.json",
+    "typecheck": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18"
+  },
+  "dependencies": {
+    "@internationalized/date": "^3.6.0",
+    "@kafui/styles": "workspace:*",
+    "react-aria-components": "^1.5.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19",
+    "@types/react-dom": "^19"
+  }
+}

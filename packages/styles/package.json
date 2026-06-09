@@ -1,0 +1,24 @@
+{
+  "name": "@kafui/styles",
+  "version": "0.0.0",
+  "description": "CSS-first Material 3 styles for kafUI: full tonal palette generated from one source color via OKLCH relative-color + light-dark(), BEM component classes, dark mode + RTL built in.",
+  "type": "module",
+  "license": "MIT",
+  "sideEffects": [
+    "*.css"
+  ],
+  "files": [
+    "src",
+    "dist"
+  ],
+  "exports": {
+    ".": "./src/index.css",
+    "./tokens": "./src/tokens.css",
+    "./reset": "./src/reset.css",
+    "./components/*": "./src/components/*.css"
+  },
+  "scripts": {
+    "build": "bun build ./src/index.css --outdir dist",
+    "typecheck": "echo \"@kafui/styles: no TS\""
+  }
+}

@@ -1,0 +1,14 @@
+/*
+ * @kafui/styles — entry stylesheet. Import once at your app root:
+ *   import "@kafui/styles";
+ *
+ * Cascade layers fix specificity ordering so consumer overrides always win
+ * without !important. Component stylesheets register under kafui.components.
+ */
+@layer kafui.reset, kafui.tokens, kafui.base, kafui.components, kafui.utilities;
+
+@import "./reset.css" layer(kafui.reset);
+@import "./tokens.css" layer(kafui.tokens);
+
+/* Component stylesheets are added here as they ship, e.g.:
+   @import "./components/button.css" layer(kafui.components); */

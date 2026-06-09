@@ -1,0 +1,83 @@
+/*
+ * kafUI design tokens — the M3 system token layer.
+ *
+ * The entire palette derives from ONE custom property: --md-source.
+ * Tonal stops are produced with OKLCH relative-color syntax (lightness is the
+ * tone axis; chroma/hue come from the source). System color roles map tones to
+ * light/dark via light-dark(). Override --md-source to re-theme everything, or
+ * pin any individual --md-sys-* role.
+ *
+ * See temp/components/_TOKENS.md for the full design rationale.
+ */
+:root {
+  /* ── The single input ───────────────────────────────────────────── */
+  --md-source: #6750a4; /* M3 baseline seed */
+
+  /* ── Reference tonal palette (subset; OKLCH from source) ─────────── */
+  /* Primary family: keep source chroma/hue, sweep lightness for each tone. */
+  --md-ref-primary-10: oklch(from var(--md-source) 0.20 c h);
+  --md-ref-primary-20: oklch(from var(--md-source) 0.30 c h);
+  --md-ref-primary-30: oklch(from var(--md-source) 0.40 c h);
+  --md-ref-primary-40: oklch(from var(--md-source) 0.49 c h);
+  --md-ref-primary-80: oklch(from var(--md-source) 0.81 c h);
+  --md-ref-primary-90: oklch(from var(--md-source) 0.90 c h);
+
+  /* Neutral family: collapse chroma toward grey for surfaces/backgrounds. */
+  --md-ref-neutral-4:  oklch(from var(--md-source) 0.04 0.004 h);
+  --md-ref-neutral-6:  oklch(from var(--md-source) 0.06 0.004 h);
+  --md-ref-neutral-10: oklch(from var(--md-source) 0.12 0.004 h);
+  --md-ref-neutral-12: oklch(from var(--md-source) 0.15 0.005 h);
+  --md-ref-neutral-17: oklch(from var(--md-source) 0.20 0.005 h);
+  --md-ref-neutral-22: oklch(from var(--md-source) 0.25 0.005 h);
+  --md-ref-neutral-90: oklch(from var(--md-source) 0.90 0.004 h);
+  --md-ref-neutral-94: oklch(from var(--md-source) 0.94 0.004 h);
+  --md-ref-neutral-96: oklch(from var(--md-source) 0.96 0.003 h);
+  --md-ref-neutral-98: oklch(from var(--md-source) 0.98 0.003 h);
+
+  /* ── System color roles (md.sys.color.*) ─────────────────────────── */
+  --md-sys-color-primary:              light-dark(var(--md-ref-primary-40), var(--md-ref-primary-80));
+  --md-sys-color-on-primary:           light-dark(#ffffff, var(--md-ref-primary-20));
+  --md-sys-color-primary-container:    light-dark(var(--md-ref-primary-90), var(--md-ref-primary-30));
+  --md-sys-color-on-primary-container: light-dark(var(--md-ref-primary-10), var(--md-ref-primary-90));
+
+  --md-sys-color-surface:                   light-dark(var(--md-ref-neutral-98), var(--md-ref-neutral-6));
+  --md-sys-color-on-surface:                light-dark(var(--md-ref-neutral-10), var(--md-ref-neutral-90));
+  --md-sys-color-surface-container-lowest:  light-dark(#ffffff, var(--md-ref-neutral-4));
+  --md-sys-color-surface-container-low:     light-dark(var(--md-ref-neutral-96), var(--md-ref-neutral-10));
+  --md-sys-color-surface-container:         light-dark(var(--md-ref-neutral-94), var(--md-ref-neutral-12));
+  --md-sys-color-surface-container-high:    light-dark(var(--md-ref-neutral-92, var(--md-ref-neutral-94)), var(--md-ref-neutral-17));
+  --md-sys-color-surface-container-highest: light-dark(var(--md-ref-neutral-90), var(--md-ref-neutral-22));
+
+  --md-sys-color-outline:         light-dark(oklch(from var(--md-source) 0.55 0.02 h), oklch(from var(--md-source) 0.65 0.02 h));
+  --md-sys-color-outline-variant: light-dark(oklch(from var(--md-source) 0.82 0.01 h), oklch(from var(--md-source) 0.40 0.01 h));
+  --md-sys-color-inverse-surface: light-dark(var(--md-ref-neutral-22), var(--md-ref-neutral-90));
+  --md-sys-color-error:           light-dark(oklch(0.49 0.20 27), oklch(0.81 0.12 19));
+
+  /* ── State layer opacities (md.sys.state.*) ──────────────────────── */
+  --md-sys-state-hover-opacity: 0.08;
+  --md-sys-state-focus-opacity: 0.10;
+  --md-sys-state-pressed-opacity: 0.10;
+  --md-sys-state-dragged-opacity: 0.16;
+
+  /* ── Shape (md.sys.shape.corner.*) ───────────────────────────────── */
+  --md-sys-shape-corner-none: 0;
+  --md-sys-shape-corner-extra-small: 4px;
+  --md-sys-shape-corner-small: 8px;
+  --md-sys-shape-corner-medium: 12px;
+  --md-sys-shape-corner-large: 16px;
+  --md-sys-shape-corner-extra-large: 28px;
+  --md-sys-shape-corner-full: 9999px;
+
+  /* ── Motion (md.sys.motion.*) ────────────────────────────────────── */
+  --md-sys-motion-easing-standard: cubic-bezier(0.2, 0, 0, 1);
+  --md-sys-motion-easing-emphasized: cubic-bezier(0.3, 0, 0.8, 0.15);
+  --md-sys-motion-duration-short: 150ms;
+  --md-sys-motion-duration-medium: 300ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --md-sys-motion-duration-short: 0ms;
+    --md-sys-motion-duration-medium: 0ms;
+  }
+}

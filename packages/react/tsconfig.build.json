@@ -1,0 +1,10 @@
+{
+  // Used by `build` to emit .d.ts only (Bun emits the JS).
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "emitDeclarationOnly": true,
+    "declaration": true,
+    "outDir": "dist"
+  }
+}

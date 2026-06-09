@@ -1,0 +1,21 @@
+/* Minimal, opinion-light reset. Lives in the lowest layer so it never fights
+   component styles or consumer resets. */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:where(html) {
+  /* Opt the whole tree into automatic light/dark via light-dark(). */
+  color-scheme: light dark;
+  -webkit-text-size-adjust: 100%;
+}
+
+:where(body) {
+  margin: 0;
+}
+
+:where(:focus-visible) {
+  outline: none; /* components draw their own M3 focus indicator */
+}
